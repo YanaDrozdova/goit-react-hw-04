@@ -1,4 +1,4 @@
-// import css from './App.module.css'
+import css from './App.module.css'
 import { useEffect, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
@@ -6,6 +6,7 @@ import { fetchPhotos } from '../../photos-api';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
 import EmptyResult from '../EmptyResult/EmptyResult';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 
 export default function App() {
   const [query, setQuery] = useState('');
@@ -19,6 +20,10 @@ export default function App() {
     setPhotos([]);
     setQuery(newQuery);
     setPage(1);
+  };
+
+  const handleLoadMore = () => {
+    setPage(page + 1);
   };
 
   useEffect(() => {
@@ -47,12 +52,15 @@ export default function App() {
   }, [query, page]);
 
   return (
-    <>
+    <div className={css.container}>
       <SearchBar onSearch={handleSearch} />
       {photos.length > 0 && <ImageGallery photos={photos} />}
       {isEmpty && <EmptyResult />}
       {error && <ErrorMessage />}
       {loading && <Loader />}
-    </>
+      {photos.length > 0 && !loading && (
+        <LoadMoreBtn onClick={handleLoadMore}>Load more</LoadMoreBtn>
+      )}
+    </div>
   );
 }
