@@ -6,6 +6,7 @@ Modal.setAppElement('#root');
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.75)', // Темне фонове забарвлення
+    zIndex: 1100,
   },
   content: {
     top: '10%', // Закріплюємо зверху
@@ -19,6 +20,8 @@ const customStyles = {
     justifyContent: 'center', // Вирівнюємо по центру
     alignItems: 'center', // Вирівнюємо по центру
     padding: '0',
+    paddingTop: '',
+    zIndex: '1100',
   },
 };
 
