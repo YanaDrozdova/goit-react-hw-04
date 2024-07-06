@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import { fetchPhotos } from '../../photos-api';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 export default function App() {
   const [query, setQuery] = useState('');
@@ -38,7 +39,7 @@ export default function App() {
     <>
       <SearchBar onSearch={handleSearch} />
       {photos.length > 0 && <ImageGallery photos={photos} />}
-      {error && <p>Oops! There was an error, please reload this page!</p>}
+      {error && <ErrorMessage />}
     </>
   );
 }

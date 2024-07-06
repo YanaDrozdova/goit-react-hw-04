@@ -5,8 +5,13 @@ export default function ImageGallery({ photos }) {
   return (
     <ul className={css.list}>
       {photos.map(photo => (
-        <li key={photo.id}>
-          <ImageCard alt={photo.description} src={photo.urls}></ImageCard>
+        <li key={photo.id} className={css.item}>
+          <ImageCard
+            alt={photo.alt_description}
+            src={photo.urls}
+            likes={photo.likes}
+            name={photo.user.name}
+          ></ImageCard>
         </li>
       ))}
     </ul>
