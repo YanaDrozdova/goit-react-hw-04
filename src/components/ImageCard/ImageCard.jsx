@@ -1,13 +1,13 @@
 import css from './ImageCard.module.css';
 
-export default function ImageCard({ alt, src, likes, name }) {
+export default function ImageCard({ alt, src, likes, name, openModal }) {
   return (
     <>
       <img
         className={css.photo}
         src={src.small}
         alt={alt}
-        // onClick={() => openModal({ src: src.large, alt })}
+        onClick={() => openModal({ src: src.regular, alt })}
       />
       <div className={css.info}>
         <p className={css.text}>Author: {name}</p>
