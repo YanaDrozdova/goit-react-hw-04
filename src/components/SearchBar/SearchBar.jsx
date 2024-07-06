@@ -10,7 +10,7 @@ export default function SearchBar({ onSearch }) {
         initialValues={{ search: '' }}
         onSubmit={(values, actions) => {
           if (values.search === '') {
-            toast.error('Text must be entered to search for images');
+            toast.error('Please enter text to search photos');
           }
           onSearch(values.search);
           actions.resetForm();
